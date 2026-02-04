@@ -49,7 +49,7 @@ export const TaskItem = (
                 }}
             >
                 <Text size="md" fw={700}>{task.title}</Text>
-                <Text size="sm">{task.priority}</Text>
+                <Text size="sm">{`Priority: ${task.priority}`}</Text>
                 <Text size="sm">{`Created: ${date?.toUTCString()}`}</Text>
             </Box>
             <Group justify="flex-end" mt="md">
