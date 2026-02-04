@@ -4,6 +4,7 @@ import { theme } from "./theme";
 import { TaskForm } from './components/task-form';
 import { TaskList } from "./components/task-list";
 import { useState } from "react";
+import { TaskCounter } from "./components/task-counter";
 
 const toTask = (values: any) => ({
   id: Date.now(), // Simple ID generation acceptable
@@ -20,12 +21,11 @@ export default function App() {
     setTasks((prev) => [...prev, toTask(values) ])
   };
 
-  console.log(tasks);
-
   return (
     <MantineProvider theme={theme}>
       <Container strategy="grid" size='md' bg='var(--mantine-color-blue-light)'>
         <Box><TaskForm onSubmit={handleSubmitTask} /></Box>
+        <Box><TaskCounter tasks={tasks} /></Box>
         <Box><TaskList tasks={tasks} /></Box>
       </Container>
     </MantineProvider>
