@@ -14,6 +14,7 @@ const toTask = (values: any) => ({
   createdAt: new Date().toISOString()
 });
 
+// TODO: Add TypeScript types
 export default function App() {
   const [tasks, setTasks] = useState<any[]>([]);
 
@@ -21,12 +22,25 @@ export default function App() {
     setTasks((prev) => [...prev, toTask(values) ])
   };
 
+  const toggleComplete = (id: number, isCompleted: boolean) => {
+    setTasks((prev) => prev.map((task) => {
+      if (task.id !== id) {
+        return task;
+      }
+
+      return {
+        ...task,
+        completed: isCompleted,
+      };
+    }))
+  };
+
   return (
     <MantineProvider theme={theme}>
       <Container strategy="grid" size='md' bg='var(--mantine-color-blue-light)'>
         <Box><TaskForm onSubmit={handleSubmitTask} /></Box>
         <Box><TaskCounter tasks={tasks} /></Box>
-        <Box><TaskList tasks={tasks} /></Box>
+        <Box><TaskList tasks={tasks} onComplete={toggleComplete} /></Box>
       </Container>
     </MantineProvider>
   );
