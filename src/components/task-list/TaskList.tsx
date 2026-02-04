@@ -1,5 +1,7 @@
+import { TaskItem } from "../task-item/TaskItem";
+
 export const TaskList = ({ tasks }: any) => {
     return (
-        <ol>{tasks?.map((task: any) => <li key={task.id}>{task.title}</li>)}</ol>
+        <ol>{tasks?.map((task: any) => <TaskItem key={task.id} task={task} />)}</ol>
     );
 };
