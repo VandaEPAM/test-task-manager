@@ -22,6 +22,10 @@ export default function App() {
     setTasks((prev) => [...prev, toTask(values) ])
   };
 
+  const handleDeleteTask = (id: number) => {
+    setTasks((prev) => prev.filter((task) => task.id !== id));
+  };
+
   const toggleComplete = (id: number, isCompleted: boolean) => {
     setTasks((prev) => prev.map((task) => {
       if (task.id !== id) {
@@ -40,7 +44,7 @@ export default function App() {
       <Container strategy="grid" size='md' bg='var(--mantine-color-blue-light)'>
         <Box><TaskForm onSubmit={handleSubmitTask} /></Box>
         <Box><TaskCounter tasks={tasks} /></Box>
-        <Box><TaskList tasks={tasks} onComplete={toggleComplete} /></Box>
+        <Box><TaskList tasks={tasks} onComplete={toggleComplete} onDelete={handleDeleteTask} /></Box>
       </Container>
     </MantineProvider>
   );
