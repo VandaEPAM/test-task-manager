@@ -90,6 +90,25 @@ src/
 * No external state management libraries are used
 * Designed as a simple, clear demonstration of core React concepts
 
+## Planned Improvements
+
+* Add full TypeScript typings to improve type safety and developer experience
+* Refactor and improve component architecture for better scalability and maintainability
+* Add tests:
+1. Unit tests for core logic and components
+2. Integration tests for key user flows
+* After these improvements, complete the remaining requirements, including secondary features (Priority 2):
+1. Enhanced functionality:
+* Edit existing tasks with inline title updates
+* Add basic text search by task title
+* Add status filters: All, Complete, Incomplete
+* Persist tasks using localStorage between browser sessions
+2. Improved UI/UX:
+* Introduce loading states for user actions
+* Add hover effects and interactive visual feedback
+* Improve form validation with clear error messages
+* Further enhance mobile responsiveness
+
 ## License
 
 This project is intended for educational and test purposes.
