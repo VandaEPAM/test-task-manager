@@ -26,7 +26,7 @@ export default function App() {
     <MantineProvider theme={theme}>
       <Container strategy="grid" size='md' bg='var(--mantine-color-blue-light)'>
         <Box><TaskForm onSubmit={handleSubmitTask} /></Box>
-        <Box><TaskList /></Box>
+        <Box><TaskList tasks={tasks} /></Box>
       </Container>
     </MantineProvider>
   );
