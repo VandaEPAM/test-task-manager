@@ -1,4 +1,12 @@
-import { Button, Checkbox, Group } from "@mantine/core"
+import { Box, Button, Checkbox, Group, Text } from "@mantine/core"
+
+const PRIORITY_COLOR = {
+    high: '#dc2626',
+    medium: '#ca8a04',
+    low: '#16a34a',
+};
+
+const TASK_COMPLETION_COLOR = '#6b7280';
 
 export const TaskItem = (
     { task, onComplete, onDelete }:
@@ -15,16 +23,32 @@ export const TaskItem = (
         onDelete(task.id);
     };
 
+    const priorityColor = task.completed
+        ? TASK_COMPLETION_COLOR
+        : PRIORITY_COLOR[task.priority.toLowerCase() as keyof typeof PRIORITY_COLOR];
+
     return (
-        <li>
+        <Box
+            component="li"
+            p="8px"
+            m="8px"
+            bg="#f9fafb"
+            bdrs="4px" 
+            style={{
+                border: `1px solid ${priorityColor}`,
+                textDecoration: task.completed ? 'line-through' : 'none',
+                color: priorityColor,
+                fontWeight: 400,
+            }}
+        >
             {/* TODO: Add logic for checkbox */}
             <Checkbox checked={task.completed} label="Completed" onChange={toggleComplete} />
-            <div>{task.title}</div>
-            <div>{task.priority}</div>
-            <div>{`Created: ${date?.toUTCString()}`}</div>
+            <Text size="md" fw={700}>{task.title}</Text>
+            <Text size="sm">{task.priority}</Text>
+            <Text size="sm">{`Created: ${date?.toUTCString()}`}</Text>
             <Group justify="flex-end" mt="md">
                 <Button type="button" color="red" onClick={handleDelete}>Delete</Button>
             </Group>
-        </li>
+        </Box>
     );
 };
