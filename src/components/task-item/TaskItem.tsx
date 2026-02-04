@@ -36,16 +36,22 @@ export const TaskItem = (
             bdrs="4px" 
             style={{
                 border: `1px solid ${priorityColor}`,
-                textDecoration: task.completed ? 'line-through' : 'none',
-                color: priorityColor,
-                fontWeight: 400,
             }}
         >
-            {/* TODO: Add logic for checkbox */}
             <Checkbox checked={task.completed} label="Completed" onChange={toggleComplete} />
-            <Text size="md" fw={700}>{task.title}</Text>
-            <Text size="sm">{task.priority}</Text>
-            <Text size="sm">{`Created: ${date?.toUTCString()}`}</Text>
+            <Box
+                m="8px"
+                p="8px"
+                style={{
+                    textDecoration: task.completed ? 'line-through' : 'none',
+                    color: priorityColor,
+                    fontWeight: 400,
+                }}
+            >
+                <Text size="md" fw={700}>{task.title}</Text>
+                <Text size="sm">{task.priority}</Text>
+                <Text size="sm">{`Created: ${date?.toUTCString()}`}</Text>
+            </Box>
             <Group justify="flex-end" mt="md">
                 <Button type="button" color="red" onClick={handleDelete}>Delete</Button>
             </Group>
